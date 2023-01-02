@@ -1,22 +1,16 @@
 package challenge.three;
 
-import java.time.LocalDate;
+public class FCI extends Producto {
 
-public class FCI {
-	
-	private LocalDate apertura;
 	private String nombre;
 	private float importe;
 	private float rentabilidad;
 	
-	public FCI() {}
-
-	public LocalDate getApertura() {
-		return apertura;
-	}
-
-	public void setApertura(LocalDate apertura) {
-		this.apertura = apertura;
+	public FCI(int codigo, String descripcion, String nombre, float importe, float rentabilidad) {
+		super(codigo, descripcion);
+		this.nombre = nombre;
+		this.importe = importe;
+		this.rentabilidad = rentabilidad;
 	}
 
 	public String getNombre() {
@@ -45,20 +39,12 @@ public class FCI {
 
 	@Override
 	public String toString() {
-		return "FCI [apertura=" + apertura + ", nombre=" + nombre + ", importe=" + importe + ", rentabilidad="
-				+ rentabilidad + "]";
+		return "FCI [codigo=" + codigo + ", apertura=" + apertura + ", descripcion=" + descripcion + ", nombre="
+				+ nombre + ", importe=" + importe + ", rentabilidad=" + rentabilidad + "]";
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		return ((FCI)obj).getNombre().equals(this.getNombre());
-	}
+	public String terminos() {
+		return "Terminos del FCI " + this.getNombre() + ": ...";
+	}	
 }

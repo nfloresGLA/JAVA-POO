@@ -3,66 +3,13 @@ package challenge.two;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Alumno {
+public class Alumno extends Persona {
 	
-	private String nombre;
-	private String apellido;
-	private int dni;
-	private String direccion;
-	private Carrera carrera;
-	private List<Asignatura> asignaturas = new ArrayList<Asignatura>();		
-
-	public Alumno() {}	
+	private List<Asignatura> asignaturas = new ArrayList<Asignatura>();
 
 	public Alumno(String nombre, String apellido, int dni, String direccion, Carrera carrera) {
-		super();
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
-		this.direccion = direccion;
-		this.carrera = carrera;
-	}
-
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public int getDni() {
-		return dni;
-	}
-
-	public void setDni(int dni) {
-		this.dni = dni;
-	}
-
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-
-	public Carrera getCarrera() {
-		return carrera;
-	}
-
-	public void setCarrera(Carrera carrera) {
-		this.carrera = carrera;
-	}
+		super(nombre, apellido, dni, direccion, carrera);
+	}	
 
 	public List<Asignatura> getAsignaturas() {
 		return asignaturas;
@@ -70,7 +17,7 @@ public class Alumno {
 
 	public void setAsignaturas(List<Asignatura> asignaturas) {
 		this.asignaturas = asignaturas;
-	}
+	}	
 
 	@Override
 	public String toString() {
@@ -79,15 +26,11 @@ public class Alumno {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + dni;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		return ((Alumno)obj).getDni() == this.getDni();
+	public String saludar() {
+		return "Me llamo: " + this.getNombre() + " y soy un estudiante!!!";
+	}	
+	
+	public String saludar(String mensaje) {
+		return "Soy un estudiante " + mensaje;
 	}
 }

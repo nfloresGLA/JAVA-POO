@@ -1,13 +1,13 @@
 package challenge.one;
 
-public class Producto {
+public abstract class Producto {
 	
-	private String nombre;
-	private float ancho;
-	private float largo;
-	private float peso;
-	private float volumen;
-	private int cantidad;
+	protected String nombre;
+	protected float ancho;
+	protected float largo;
+	protected float peso;
+	protected float volumen;
+	protected int cantidad;
 
 	public Producto(String nombre, float ancho, float largo, float peso, float volumen) {
 		this.nombre = nombre;
@@ -82,5 +82,11 @@ public class Producto {
 	@Override
 	public boolean equals(Object obj) {
 		return ((Producto)obj).getNombre().equalsIgnoreCase(this.getNombre());
+	}
+	
+	public abstract void estado();
+	
+	public String mostrarEstado() {
+		return "Estado para sobrecarga";
 	}
 }

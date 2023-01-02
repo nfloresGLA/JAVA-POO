@@ -1,23 +1,16 @@
 package challenge.three;
 
-import java.time.LocalDate;
-
-public class Cuenta {
+public abstract class Cuenta extends Producto {
 	
-	private LocalDate apertura;
 	private int numero;
 	private float saldo;
-	private float interes;
-	private String tipo;
-	
-	public Cuenta() {}
+	private float interes;	
 
-	public LocalDate getApertura() {
-		return apertura;
-	}
-
-	public void setApertura(LocalDate apertura) {
-		this.apertura = apertura;
+	public Cuenta(int codigo, String descripcion, int numero, float saldo, float interes) {
+		super(codigo, descripcion);
+		this.numero = numero;
+		this.saldo = saldo;
+		this.interes = interes;
 	}
 
 	public int getNumero() {
@@ -44,30 +37,9 @@ public class Cuenta {
 		this.interes = interes;
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
 	@Override
 	public String toString() {
-		return "Cuenta [apertura=" + apertura + ", numero=" + numero + ", saldo=" + saldo + ", interes=" + interes
-				+ ", tipo=" + tipo + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + numero;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		return ((Cuenta)obj).getNumero() == this.getNumero();
+		return "Cuenta [codigo=" + codigo + ", apertura=" + apertura + ", descripcion=" + descripcion + ", numero="
+				+ numero + ", saldo=" + saldo + ", interes=" + interes + "]";
 	}
 }

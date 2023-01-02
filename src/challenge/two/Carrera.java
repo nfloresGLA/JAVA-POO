@@ -6,7 +6,14 @@ public class Carrera {
 	private String departamento;
 	private String universidad;
 	
-	public Carrera() {}
+	public Carrera() {}	
+
+	public Carrera(String nombre, String departamento, String universidad) {
+		super();
+		this.nombre = nombre;
+		this.departamento = departamento;
+		this.universidad = universidad;
+	}
 
 	public String getNombre() {
 		return nombre;

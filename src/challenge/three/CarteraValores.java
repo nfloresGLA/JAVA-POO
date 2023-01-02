@@ -3,11 +3,13 @@ package challenge.three;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarteraValores {
+public class CarteraValores extends Producto {
 	
 	private List<Valor> valores = new ArrayList<Valor>();
 
-	public CarteraValores() {}
+	public CarteraValores(int codigo, String descripcion) {
+		super(codigo, descripcion);
+	}
 
 	public List<Valor> getValores() {
 		return valores;
@@ -19,6 +21,12 @@ public class CarteraValores {
 
 	@Override
 	public String toString() {
-		return "CarteraValores [valores=" + valores + "]";
-	}	
+		return "CarteraValores [codigo=" + codigo + ", apertura=" + apertura + ", descripcion=" + descripcion
+				+ ", valores=" + valores + "]";
+	}
+
+	@Override
+	public String terminos() {
+		return "Terminos de la Cartera de valores " + this.getDescripcion() + ": ...";
+	}
 }

@@ -59,7 +59,7 @@ public class SistemaSensor {
 				+ "[Total productos: " + this.totalProductos + "]";
 	}
 	
-	public boolean agregarProducto(String nombre, float ancho, float largo, float peso, float volumen) {
+	public boolean agregarLata(String nombre, float ancho, float largo, float peso, float volumen, boolean aluminio) {
 		
 		Producto producto = this.traerProducto(nombre); // Compruebo si el producto ya existe en la lista
 		boolean flag = false;
@@ -67,7 +67,50 @@ public class SistemaSensor {
 		if(producto != null) producto.setCantidad(producto.getCantidad() + 1); // En caso de existir se le suma la cantidad + 1
 		
 		else { // Caso contrario que no exista, se agrega a la lista
-			producto = new Producto(nombre, ancho, largo, peso, volumen);
+			producto = new Lata(nombre, ancho, largo, peso, volumen, aluminio);
+			producto.setCantidad(1);
+			productos.add(producto);			 
+			flag = true;
+		}
+		
+		// Se agregan los valores diarios y los de esta tx
+		this.setTotalDiario(this.getTotalDiario() + 1);
+		this.setTotalProductos(this.getTotalProductos() + 1);
+		
+		return flag;
+		
+	}
+	
+	public boolean agregarBotella(String nombre, float ancho, float largo, float peso, float volumen) {
+		
+		Producto producto = this.traerProducto(nombre); // Compruebo si el producto ya existe en la lista
+		boolean flag = false;
+		
+		if(producto != null) producto.setCantidad(producto.getCantidad() + 1); // En caso de existir se le suma la cantidad + 1
+		
+		else { // Caso contrario que no exista, se agrega a la lista
+			producto = new Botella(nombre, ancho, largo, peso, volumen);
+			producto.setCantidad(1);
+			productos.add(producto);			 
+			flag = true;
+		}
+		
+		// Se agregan los valores diarios y los de esta tx
+		this.setTotalDiario(this.getTotalDiario() + 1);
+		this.setTotalProductos(this.getTotalProductos() + 1);
+		
+		return flag;
+	}	
+	
+	public boolean agregarEnvase(String nombre, float ancho, float largo, float peso, float volumen) {
+		
+		Producto producto = this.traerProducto(nombre); // Compruebo si el producto ya existe en la lista
+		boolean flag = false;
+		
+		if(producto != null) producto.setCantidad(producto.getCantidad() + 1); // En caso de existir se le suma la cantidad + 1
+		
+		else { // Caso contrario que no exista, se agrega a la lista
+			producto = new Envase(nombre, ancho, largo, peso, volumen);
 			producto.setCantidad(1);
 			productos.add(producto);			 
 			flag = true;
