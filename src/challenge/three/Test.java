@@ -11,6 +11,7 @@ public class Test {
 		Producto corriente = new Corriente(3334, "cuenta corriente", 87654321, 50, 0);
 
 		System.out.println("=== Challenge 03 ===");
+
 		imprimirProducto(fci);
 		imprimirProducto(cartera);
 		imprimirProducto(cajaAhorro);
