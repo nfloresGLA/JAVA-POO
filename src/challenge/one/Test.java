@@ -9,6 +9,10 @@ public class Test {
 		testInicioReseteaTransaccion();
 		testBusquedaProductoExistenteEInexistente();
 		testEstadoDeProductos();
+		testCantidadAcumuladaPorTipo();
+		testBusquedaCaseInsensitive();
+		testReciboSinProductos();
+		testTotalDiarioAcumulado();
 	}
 
 	private static void testCargaYTotales() {
@@ -63,6 +67,53 @@ public class Test {
 			elemento.estado();
 			System.out.println("- " + elemento.getNombre() + " -> " + elemento.mostrarEstado());
 		}
+		System.out.println();
+	}
+
+	private static void testCantidadAcumuladaPorTipo() {
+		SistemaSensor sistema = new SistemaSensor();
+		sistema.agregarLata("lata", 0.45f, 0.50f, 1.200f, 0.700f, true);
+		sistema.agregarLata("lata", 0.45f, 0.50f, 1.200f, 0.700f, true);
+		sistema.agregarLata("lata", 0.45f, 0.50f, 1.200f, 0.700f, true);
+
+		Producto lata = sistema.traerProducto("lata");
+
+		System.out.println("[Test] Cantidad acumulada por tipo");
+		assertResultado("Solo 1 tipo en lista", sistema.getProductos().size() == 1);
+		assertResultado("Cantidad acumulada en lata = 3", lata != null && lata.getCantidad() == 3);
+		System.out.println();
+	}
+
+	private static void testBusquedaCaseInsensitive() {
+		SistemaSensor sistema = new SistemaSensor();
+		sistema.agregarEnvase("Envase", 0.33f, 0.70f, 1.700f, 0.910f);
+
+		Producto encontrada = sistema.traerProducto("envase");
+
+		System.out.println("[Test] Búsqueda case-insensitive");
+		assertResultado("Encuentra aunque cambie mayúsculas/minúsculas", encontrada != null);
+		System.out.println();
+	}
+
+	private static void testReciboSinProductos() {
+		SistemaSensor sistema = new SistemaSensor();
+		String recibo = sistema.recibo();
+
+		System.out.println("[Test] Recibo sin productos");
+		assertResultado("Muestra mensaje de lista vacía", recibo.contains("Sin elementos cargados"));
+		System.out.println();
+	}
+
+	private static void testTotalDiarioAcumulado() {
+		SistemaSensor sistema = new SistemaSensor();
+		sistema.agregarLata("lata", 0.45f, 0.50f, 1.200f, 0.700f, true);
+		sistema.agregarEnvase("envase", 0.33f, 0.70f, 1.700f, 0.910f);
+		sistema.iniciar();
+		sistema.agregarBotella("botella", 0.20f, 0.40f, 0.800f, 0.710f);
+
+		System.out.println("[Test] Total diario acumulado");
+		assertResultado("Total diario = 3", sistema.getTotalDiario() == 3);
+		assertResultado("Total transacción actual = 1", sistema.getTotalProductos() == 1);
 		System.out.println();
 	}
 
