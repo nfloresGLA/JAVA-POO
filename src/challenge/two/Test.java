@@ -15,6 +15,7 @@ public class Test {
 		System.out.println(profesor);
 
 		System.out.println("\nSaludos:");
+
 		System.out.println(alumno.saludar());
 		System.out.println(profesor.saludar());
 		System.out.println(alumno.saludar("que quiere desearte exitos en tu carrera!"));
