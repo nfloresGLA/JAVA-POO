@@ -1,32 +1,37 @@
-# Programacion orientada a objetos (POO) - EducacionIT.
+# Programación Orientada a Objetos (POO) - EducaciónIT
 
-### Proyecto integrador hecho con Java.
+Proyecto integrador desarrollado en Java, organizado en tres desafíos progresivos para practicar modelado orientado a objetos, herencia y abstracción.
 
-<br>
+## Contenido
 
-## Casos:
+- `challenge/one`: sistema de calibración y clasificación de envases.
+- `challenge/two`: sistema de gestión académica de alumnos y profesores.
+- `challenge/three`: sistema de productos bancarios.
+- `modules/`: PDFs con el material de cada módulo.
+- `src/uml/`: diagramas UML de los ejercicios.
 
-- Primer caso: Gestion de elementos ingresados por el usuario
-- Segundo caso: Gestion de tramites academicos de alumnos
-- Tercer caso: Gestion de productos bancarios
+## Estructura del proyecto
 
-## Carpetas:
-~~~ js
-src: modulos resueltos por orden (challenge one, two, three)
-modules: archivos PDF de cada modulo
-~~~
-## Resumen del contenido
-<br>
-El proyecto cuenta con 3 etapas de desarrollo (uno por cada modulo)
+- `src/challenge/one`
+- `src/challenge/two`
+- `src/challenge/three`
+- `src/uml`
+- `modules`
 
-~~~ js
-/* Challenge-01 */
-Diagramas UML de los 3 casos
+## Resumen por etapa
 
-/* Challenge-02 */
-Se desarrollan las clases (SIN herencia)
+1. **Challenge 01**: modelado base de clases para los casos planteados.
+2. **Challenge 02**: implementación de lógica de negocio en cada dominio.
+3. **Challenge 03**: refactor con herencia, clases abstractas y ajustes de diseño UML.
 
-/* Challenge-03 */
-Se agrega herencia y metodos abstractos, 
-ademas de la correccion de los diagramas UML
-para refactorizar el proyecto
+## Ejecución rápida (desde la raíz)
+
+Compilar todo el código:
+
+`javac -d out src/challenge/one/*.java src/challenge/two/*.java src/challenge/three/*.java`
+
+Ejecutar tests de ejemplo:
+
+- `java -cp out challenge.one.Test`
+- `java -cp out challenge.two.Test`
+- `java -cp out challenge.three.Test`
