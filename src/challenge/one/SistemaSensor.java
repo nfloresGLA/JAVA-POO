@@ -51,12 +51,23 @@ public class SistemaSensor {
 		System.out.println("Por favor ingrese los elementos");
 	}
 	
-	public String recibo() {	
-		
-		return 
-				"RECIBO: "
-				+ "elementos calibrados: \n" + productos + "\n"
-				+ "[Total productos: " + this.totalProductos + "]";
+	public String recibo() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("RECIBO\n");
+		sb.append("------------------------------\n");
+		sb.append("Elementos calibrados:\n");
+
+		if (productos.isEmpty()) {
+			sb.append("- Sin elementos cargados\n");
+		} else {
+			for (Producto producto : productos) {
+				sb.append("- ").append(producto).append("\n");
+			}
+		}
+
+		sb.append("------------------------------\n");
+		sb.append("Total productos: ").append(this.totalProductos);
+		return sb.toString();
 	}
 	
 	public boolean agregarLata(String nombre, float ancho, float largo, float peso, float volumen, boolean aluminio) {
